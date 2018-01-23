@@ -20,10 +20,35 @@ services:
     ports:
       - 9400:9200
     networks:
-      - esnet
+      - elk
+    restart: always
+  
+  logstash:
+    image: docker.elastic.co/logstash/logstash:6.1.2
+    ports:
+      - "5000:5000"
+    environment:
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+    networks:
+      - elk
+    depends_on:
+      - elasticsearch
+    restart: always
+  
+  kibana:
+    image: docker.elastic.co/kibana/kibana:6.1.2
+    ports:
+      - "5601:5601"
+    networks:
+      - elk
+    depends_on:
+      - elasticsearch
+    
 volumes:
   esdata1:
     driver: local
 
 networks:
   esnet:
+  elk:
+    driver: bridge
