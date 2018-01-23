@@ -10,7 +10,7 @@ services:
       - discovery.type=single-node
       - xpack.security.authc.accept_default_password=false
       - xpack.security.enabled=false
-      - path.data=/storage/docker/elasticsearch-datadir/data
+      - path.data=/usr/share/elasticsearch/data
     ulimits:
       memlock:
         soft: -1
@@ -18,7 +18,7 @@ services:
     volumes:
       - esdata1:/storage/docker/elasticsearch-datadir/data
     ports:
-      - 9200:9400
+      - 9400:9200
     networks:
       - esnet
 volumes:
