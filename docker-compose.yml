@@ -32,23 +32,22 @@ services:
       - elasticsearch
     restart: always
   
-  kibana:
-    image: docker.elastic.co/kibana/kibana:6.1.2
-    volumes:
-      - ./kibana/config/:/usr/share/kibana/config:ro
-    ports:
-      - "5601:5601"
-    networks:
-      - elk
-    depends_on:
-      - elasticsearch
-    restart: always
+#  kibana:
+#    image: docker.elastic.co/kibana/kibana:6.1.2
+#    volumes:
+#      - ./kibana/config/:/usr/share/kibana/config:ro
+#    ports:
+#      - "5601:5601"
+#    networks:
+#      - elk
+#    depends_on:
+#      - elasticsearch
+#    restart: always
     
 volumes:
   esdata1:
     driver: local
 
 networks:
-  esnet:
   elk:
     driver: bridge
