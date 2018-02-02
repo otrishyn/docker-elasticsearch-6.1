@@ -20,6 +20,7 @@ services:
   logstash:
     image: docker.elastic.co/logstash/logstash:6.1.2
     volumes:
+      - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
       - ./logstash/pipeline/logstash.conf/:/usr/share/logstash/pipeline/logstash.conf
     ports:
       - "5000:5000"
