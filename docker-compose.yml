@@ -11,7 +11,7 @@ services:
       - discovery.type=single-node
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     volumes:
-      - esdata1:/storage/docker/elasticsearch-datadir/data
+      - /storage/docker/elasticsearch-datadir/data:/usr/share/elasticsearch/data
     ports:
       - 9400:9200
     restart: always
