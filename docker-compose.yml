@@ -1,7 +1,7 @@
 version: '2.2'
 services:
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:6.1.2
+    image: docker.elastic.co/elasticsearch/elasticsearch-oss:6.1.2
     container_name: elasticsearch
     network_mode: bridge
     environment:
@@ -11,13 +11,13 @@ services:
       - discovery.type=single-node
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     volumes:
-      - /storage/docker/elasticsearch-datadir/data:/usr/share/elasticsearch/data
+      - ${ELASTICSEARCH_DATA}:/usr/share/elasticsearch/data
     ports:
       - 9400:9200
     restart: always
   
   logstash:
-    image: docker.elastic.co/logstash/logstash:6.1.2
+    image: docker.elastic.co/logstash/logstash-oss:6.1.2
     network_mode: bridge
     container_name: logstash
     volumes:
@@ -33,7 +33,7 @@ services:
     restart: always
   
   kibana:
-    image: docker.elastic.co/kibana/kibana:6.1.2
+    image: docker.elastic.co/kibana/kibana-oss:6.1.2
     network_mode: bridge
     container_name: kibana-6.1.2
     volumes:
