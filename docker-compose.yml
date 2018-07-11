@@ -20,6 +20,8 @@ services:
     image: docker.elastic.co/logstash/logstash-oss:6.1.2
     network_mode: bridge
     container_name: logstash
+    external_links:
+      - elasticsearch:elasticsearch
     volumes:
       - ./logstash/pipeline/logstash.conf/:/usr/share/logstash/pipeline/logstash.conf
     ports:
