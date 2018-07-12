@@ -9,7 +9,7 @@ services:
       - network.host=0.0.0.0
       - discovery.zen.minimum_master_nodes=0
       - discovery.type=single-node
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "ES_JAVA_OPTS=${ES_JAVA_OPTS:--Xms512m -Xmx512m}"
     volumes:
       - ${ELASTICSEARCH_DATA}:/usr/share/elasticsearch/data
     ports:
